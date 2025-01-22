@@ -1,0 +1,19 @@
+sidhu@sidhu:~$ mkdir -p dir1
+sidhu@sidhu:~$ touch dir1/samplefile1 dir1/samplefile2 dir1/samplefile3
+sidhu@sidhu:~$ touch dir1/samplefile1
+sidhu@sidhu:~$ sleep 1
+sidhu@sidhu:~$ touch dir1/samplefile2
+sidhu@sidhu:~$ sleep 1
+sidhu@sidhu:~$ touch dir1/samplefile3
+sidhu@sidhu:~$ ls -lt dir1
+total 0
+-rw-rw-r-- 1 sidhu sidhu 0 Jan 22 22:57 samplefile3
+-rw-rw-r-- 1 sidhu sidhu 0 Jan 22 22:57 samplefile2
+-rw-rw-r-- 1 sidhu sidhu 0 Jan 22 22:56 samplefile1
+sidhu@sidhu:~$ ls -lt dir1 > dir1/sorted_file_by_time.txt
+sidhu@sidhu:~$ cat dir1/sorted_file_by_time.txt
+total 0
+-rw-rw-r-- 1 sidhu sidhu 0 Jan 22 22:58 sorted_file_by_time.txt
+-rw-rw-r-- 1 sidhu sidhu 0 Jan 22 22:57 samplefile3
+-rw-rw-r-- 1 sidhu sidhu 0 Jan 22 22:57 samplefile2
+-rw-rw-r-- 1 sidhu sidhu 0 Jan 22 22:56 samplefile1
