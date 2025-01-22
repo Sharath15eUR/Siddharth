@@ -70,7 +70,7 @@ Use 'ps aux' to view all active processes.
 
 'x' Includes processes without a controlling terminal.
 
-**Note:** Instead of screenshot, I've pasted the output as text in the txt file.
+**Screenshot:** Instead of screenshot, I've pasted the output as text in the txt file.
 
 
 
