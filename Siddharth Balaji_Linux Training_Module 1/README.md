@@ -4,8 +4,8 @@ Name: Siddharth Balaji
 
 College: Sona College of Technology
 
-I've uploaded the answers to the following questions in their respective files and 
-the explanation of those commands below, in this README.md file.
+I've uploaded the answers to the following questions in their respective files. The output screenshots and 
+the explanation of those commands are written below, in this README.md file.
 
 # Q1. Create a file and add executable permission to all users (user, group and others)
 
@@ -18,6 +18,9 @@ Use 'chmod' is the command to change file permissions.
 '+x' adds the executable permission.
 
 'ls -l' command is to verify the permissions.
+
+
+![Screenshot 2025-01-22 214709](https://github.com/user-attachments/assets/1a29ca55-311c-49c3-aeff-ffdf1ef77504)
 
 
 # Q2. Create a file and remove write permission for group user alone.
@@ -33,6 +36,9 @@ Let's use the 'chmod' command to remove write permission for the group.
 '-w' removes the write permission.
 
 
+![Screenshot 2025-01-22 221224](https://github.com/user-attachments/assets/bf3a09c9-dfe7-4593-80c4-a0b3baaa33b0)
+
+
 # Q3. Create a file and add a softlink to the file in different directory.
 
 Use 'mkdir' command is used to create directories.
@@ -45,6 +51,9 @@ Use 'touch' command to create the file inside directory1/directory2.
 
 'ls -l' command ise used to verify the contents of directory1.
 
+![image](https://github.com/user-attachments/assets/b14f9f5e-4caf-4676-9d52-17af4a5c0cb4)
+
+
 
 # Q4. Use ps command with options to display all active process running on the system.
 
@@ -55,6 +64,8 @@ Use 'ps aux' to view all active processes.
 'u' is use to display processes in a user-friendly format with extra details.
 
 'x' Includes processes without a controlling terminal.
+
+![Screenshot 2025-01-22 230216](https://github.com/user-attachments/assets/4506a5dd-d9b6-4c3c-a2bf-89680b59226a)
 
 
 # Q5. Create 3 files in a dir1 and re-direct the output of list command with sorted by timestamp 
