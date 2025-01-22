@@ -4,8 +4,8 @@ Name: Siddharth Balaji
 
 College: Sona College of Technology
 
-I've uploaded the answers and the screenshots of the outputs to the following questions 
-in their respective files and the explanation of those commands below, in this README.md file.
+I've uploaded the answers to the following questions in their respective files and 
+the explanation of those commands below, in this README.md file.
 
 # Q1. Create a file and add executable permission to all users (user, group and others)
 
