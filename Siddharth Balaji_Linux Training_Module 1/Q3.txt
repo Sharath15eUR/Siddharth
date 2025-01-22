@@ -1,0 +1,8 @@
+sidhu@sidhu:~$ mkdir -p directory1/directory2
+sidhu@sidhu:~$ touch directory1/directory2/file
+sidhu@sidhu:~$ echo "Good day." > directory1/directory2/file
+sidhu@sidhu:~$ ln -s directory1/directory2/file directory1/soft_link_to_file
+sidhu@sidhu:~$ ls -l directory1
+total 4
+drwxrwxr-x 2 sidhu sidhu 4096 Jan 22 22:19 directory2
+lrwxrwxrwx 1 sidhu sidhu   26 Jan 22 22:25 soft_link_to_file -> directory1/directory2/file
