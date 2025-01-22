@@ -51,7 +51,7 @@ Use 'mkdir' command is used to create directories.
 
 Use 'touch' command to create the file inside directory1/directory2.
 
-'ln -s' command to create a symbolic (soft) link in directory1.
+'ln -s' command to create a soft link in directory1.
 
 'ls -l' command ise used to verify the contents of directory1.
 
