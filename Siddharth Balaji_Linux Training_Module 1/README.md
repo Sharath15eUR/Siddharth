@@ -78,3 +78,6 @@ Use 'touch' to create files.
 Use 'sleep' to delay file creation.
 
 Use 'ls -lt' command to list files where the newest file is displayed first.
+
+![Screenshot 2025-01-22 234518](https://github.com/user-attachments/assets/b29e3ccb-74ec-42e0-bb04-215f17418df6)
+
