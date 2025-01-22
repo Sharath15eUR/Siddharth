@@ -1,0 +1,4 @@
+sidhu@sidhu:~$ touch samplefile2.txt
+sidhu@sidhu:~$ chmod g-w samplefile2.txt
+sidhu@sidhu:~$ ls -l samplefile2.txt
+-rw-r--r-- 1 sidhu sidhu 0 Jan 22 21:55 samplefile2.txt
