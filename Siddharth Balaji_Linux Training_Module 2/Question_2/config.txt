@@ -1,0 +1,7 @@
+sidhu@sidhu:~$ ls -l config.txt
+-rw-rw-r-- 1 sidhu sidhu 104 Feb  1 16:11 config.txt
+sidhu@sidhu:~$ cat config.txt
+server_name localhost;
+db_host localhost;
+api_endpoint http://localhost:8080/api;
+cache_host=localhost;
