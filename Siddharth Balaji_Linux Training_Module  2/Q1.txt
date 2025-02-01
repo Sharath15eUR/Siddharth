@@ -1,0 +1,16 @@
+sidhu@sidhu:~$ find . -type f -size +1M -exec ls -lh {} + > files_larger_than_1MB.txt
+sidhu@sidhu:~$ cat files_larger_than_1MB.txt
+
+
+
+
+-rw------- 1 sidhu sidhu 1.1M Feb  1 15:47 ./.cache/gstreamer-1.0/registry.x86_64.bin
+-rw-r--r-- 1 sidhu sidhu 1.3M Feb  1 15:47 ./.cache/mesa_shader_cache/index
+-rw-r--r-- 1 sidhu sidhu 1.5M Feb  1 15:47 ./.cache/tracker3/files/http%3A%2F%2Ftracker.api.gnome.org%2Fontology%2Fv3%2Ftracker%23Audio.db-wal
+-rw-r--r-- 1 sidhu sidhu 1.5M Feb  1 15:47 ./.cache/tracker3/files/http%3A%2F%2Ftracker.api.gnome.org%2Fontology%2Fv3%2Ftracker%23Documents.db-wal
+-rw-r--r-- 1 sidhu sidhu 2.3M Feb  1 15:47 ./.cache/tracker3/files/http%3A%2F%2Ftracker.api.gnome.org%2Fontology%2Fv3%2Ftracker%23FileSystem.db-wal
+-rw-r--r-- 1 sidhu sidhu 1.5M Feb  1 15:47 ./.cache/tracker3/files/http%3A%2F%2Ftracker.api.gnome.org%2Fontology%2Fv3%2Ftracker%23Pictures.db-wal
+-rw-r--r-- 1 sidhu sidhu 1.5M Feb  1 15:47 ./.cache/tracker3/files/http%3A%2F%2Ftracker.api.gnome.org%2Fontology%2Fv3%2Ftracker%23Software.db-wal
+-rw-r--r-- 1 sidhu sidhu 1.5M Feb  1 15:47 ./.cache/tracker3/files/http%3A%2F%2Ftracker.api.gnome.org%2Fontology%2Fv3%2Ftracker%23Video.db-wal
+-rw-r--r-- 1 sidhu sidhu 2.9M Jan 22 22:54 ./.cache/tracker3/files/meta.db-wal
+-rw-r--r-- 1 sidhu sidhu 1.3M Jan 22 23:20 ./snap/snap-store/common/.cache/mesa_shader_cache/index
