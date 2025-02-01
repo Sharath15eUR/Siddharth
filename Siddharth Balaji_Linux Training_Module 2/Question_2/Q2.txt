@@ -4,4 +4,6 @@ sidhu@sidhu:~$ echo "db_host localhost;" >> config.txt
 sidhu@sidhu:~$ echo "api_endpoint http://localhost:8080/api;" >> config.txt
 sidhu@sidhu:~$ echo "cache_host=localhost;" >> config.txt
 sidhu@sidhu:~$ sed 's/localhost/127.0.0.1/g' config.txt > updated_config.txt
+sidhu@sidhu:~$ cat updated_config.txt
+
 
