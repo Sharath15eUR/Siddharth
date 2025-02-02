@@ -1,0 +1,51 @@
+sidhu@sidhu:~$ cd
+sidhu@sidhu:~$ cd ~
+sidhu@sidhu:~$ nano file_analyzer.sh
+sidhu@sidhu:~$ chmod +x file_analyzer.sh
+sidhu@sidhu:~$ mkdir -p logs/subdir
+sidhu@sidhu:~$ echo "This is an error log" > logs/error_log.txt
+sidhu@sidhu:~$ echo "No errors here" > logs/info.txt
+sidhu@sidhu:~$ echo "TODO: Fix this bug" > logs/subdir/code.sh
+sidhu@sidhu:~$ ls -R logs
+logs:
+error_log.txt  info.txt  subdir
+
+logs/subdir:
+code.sh
+sidhu@sidhu:~$ ./file_analyzer.sh -d logs -k error
+Running script: ./file_analyzer.sh
+Total arguments: 4
+Arguments received: -d logs -k error
+Checking inputs...
+Processing...
+Match found in: logs/error_log.txt
+Match found in: logs/info.txt
+sidhu@sidhu:~$ ./file_analyzer.sh -f logs/subdir/code.sh -k TODO
+Running script: ./file_analyzer.sh
+Total arguments: 4
+Arguments received: -f logs/subdir/code.sh -k TODO
+Checking inputs...
+Processing...
+Match found in file: logs/subdir/code.sh
+Exit status: 0
+sidhu@sidhu:~$ ./file_analyzer.sh --help
+Usage: ./file_analyzer.sh [OPTIONS]
+Options:
+  -d <directory>  Search recursively for a keyword in a directory.
+  -k <keyword>    Keyword to search for.
+  -f <file>       Search for a keyword in a specific file.
+  --help          Show this help message.
+
+Example Usage:
+  ./file_analyzer.sh -d logs -k error
+  ./file_analyzer.sh -f script.sh -k TODO
+  ./file_analyzer.sh --help
+sidhu@sidhu:~$ cat errors.log
+sidhu@sidhu:~$ ./file_analyzer.sh -f logs/subdir/code.sh -k Chelsea
+Running script: ./file_analyzer.sh
+Total arguments: 4
+Arguments received: -f logs/subdir/code.sh -k Chelsea
+Checking inputs...
+Processing...
+No match found in file: logs/subdir/code.sh
+Exit status: 0
