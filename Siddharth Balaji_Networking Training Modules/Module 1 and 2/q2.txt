@@ -1,5 +1,44 @@
 HOSTING A ftp SERVER AND PERFROMING put AND get OPERATIONS:
 
+sidhu@sidhu:~$ sudo apt update
+sidhu@sidhu:~$ sudo apt install vsftpd -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+vsftpd is already the newest version (3.0.5-0ubuntu3.1).
+0 upgraded, 0 newly installed, 0 to remove and 275 not upgraded.
+sidhu@sidhu:~$ sudo systemctl start vsftpd
+sidhu@sidhu:~$ sudo systemctl status vsftpd
+● vsftpd.service - vsftpd FTP server
+     Loaded: loaded (/usr/lib/systemd/system/vsftpd.service; ena>
+     Active: active (running) since Wed 2025-03-05 18:56:10 IST;>
+    Process: 1321 ExecStartPre=/bin/mkdir -p /var/run/vsftpd/emp>
+   Main PID: 1330 (vsftpd)
+      Tasks: 1 (limit: 5742)
+     Memory: 884.0K (peak: 1.7M)
+        CPU: 13ms
+     CGroup: /system.slice/vsftpd.service
+             └─1330 /usr/sbin/vsftpd /etc/vsftpd.conf
+
+Mar 05 18:56:10 sidhu systemd[1]: Starting vsftpd.service - vsft>
+Mar 05 18:56:10 sidhu systemd[1]: Started vsftpd.service - vsftp>
+
+sidhu@sidhu:~$ cat ftp
+cat: ftp: Is a directory
+sidhu@sidhu:~$ sudo mkdir -p /home/sidhu/ftp/files/
+sidhu@sidhu:~$ sudo chmod 777 /home/sidhu/ftp/files/
+sidhu@sidhu:~$ sudo mv test.txt /home/sidhu/ftp/files/
+mv: cannot stat 'test.txt': No such file or directory
+sidhu@sidhu:~$ echo "This is a test file" > test.txt
+sidhu@sidhu:~$ ls -l test.txt
+-rw-rw-r-- 1 sidhu sidhu 20 Mar  5 19:21 test.txt
+sidhu@sidhu:~$ sudo mkdir -p /home/sidhu/ftp/files/
+sidhu@sidhu:~$ sudo chmod 777 /home/sidhu/ftp/files/
+sidhu@sidhu:~$ sudo mv test.txt /home/sidhu/ftp/files
+sidhu@sidhu:~$ ls -l /home/sidhu/ftp/files/
+total 4
+-rw-rw-r-- 1 sidhu sidhu 20 Mar  5 19:21 test.txt
+
 sidhu@sidhu:~$ echo "This is a test file" > ~/test.txt
 sidhu@sidhu:~$ cat test.txt
 This is a test file
