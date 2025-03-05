@@ -82,3 +82,23 @@ ftp> bye
 HOSTING A sftp SERVER AND PERFROMING get AND put OPERATIONS:
 
 
+sidhu@sidhu:~$ echo "This is a test" > test.txt
+sidhu@sidhu:~$ cat test.txt
+This is a test
+sidhu@sidhu:~$ ls -l test.txt
+-rw-rw-r-- 1 sidhu sidhu 15 Mar  5 21:19 test.txt
+sidhu@sidhu:~$ sftp sidhu@localhost
+sidhu@localhost's password: 
+Connected to localhost.
+sftp> put -P test.txt
+Uploading test.txt to /home/sidhu/test.txt
+test.txt                         100%    20     18.8KB/s   00:00 ETA
+sftp> ls -l test.txt
+-rw-rw-r--    1 sidhu    sidhu          20 Mar  5 21:20 test.txt
+sftp> get test.txt
+Fetching /home/sidhu/test.txt to test.txt
+test.txt                         100%   20     18.1KB/s   00:00    
+sftp> exit
+
+
+---------------x------------------x---------------------
