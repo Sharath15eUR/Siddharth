@@ -1,0 +1,39 @@
+USING cp COMMAND:
+
+sidhu@sidhu:$ cp -r /home/sidhu/ipl hoem/sidhu/bbl
+sidhu@sidhu:$ ls bbl
+ipl scorchers sixers
+
+I already created a folder which contains the files 'csk' and 'mi'.
+cp command is used recursively to copy the files in the foler 'ipl' to the folder 'bbl'. 
+'bbl' folder contains its own contents along with the contents in the folder 'ipl'
+
+-------------------------------------------------------------------------------------------------------------
+
+USING scp COMMAND:
+sidhu@sidhu:~$ sudo adduser testuser
+sidhu@sidhu:~$ sudo usermod -aG sudo testuser
+sidhu@sidhu:~$ sudo apt install openssh-server -y
+sidhu@sidhu:~$ sudo systemctl enable --now ssh
+sidhu@sidhu:~$ sudo nano /etc/ssh/sshd_config
+Port 22
+AddressFamily any
+ListenAddress 0.0.0.0
+ListenAddress ::
+
+sidhu@sidhu:~$ sudo systemctl restart ssh
+sidhu@sidhu:~$ systemctl status ssh
+● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/usr/lib/systemd/system/ssh.service; enabled; pre>
+     Active: active (running) since Wed 2025-03-05 12:39:56 IST; 31s a
+Mar 05 12:46:43 sidhu systemd[1]: Starting ssh.service - OpenBSD Secur>
+Mar 05 12:46:43 sidhu sshd[4722]: Server listening on :: port 22.
+Mar 05 12:46:43 sidhu systemd[1]: Started ssh.service - OpenBSD Secure>
+sidhu@sidhu:~$ ss -tlnp | grep 22
+LISTEN 0      4096               *:22              *:*          
+sidhu@sidhu:~$ ip a
+
+sidhu@sidhu:~$ ssh testuser@192.168.1.100
+sidhu@sidhu:~$ scp -r /home/sidhu/ipl testuser@192.168.1.100:/home/testuser/bbl/
+sidhu@sidhu:~$ ls bbl
+ipl scorchers sixers
