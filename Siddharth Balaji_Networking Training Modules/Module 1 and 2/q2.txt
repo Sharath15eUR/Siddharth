@@ -1,0 +1,45 @@
+HOSTING A ftp SERVER AND PERFROMING put AND get OPERATIONS:
+
+sidhu@sidhu:~$ echo "This is a test file" > ~/test.txt
+sidhu@sidhu:~$ cat test.txt
+This is a test file
+sidhu@sidhu:~$ ls -l test.txt
+-rw-rw-r-- 1 sidhu sidhu 20 Mar  5 19:40 test.txt
+sidhu@sidhu:~$ ftp localhost
+Connected to localhost.
+220 (vsFTPd 3.0.5)
+Name (localhost:sidhu): sidhu
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> cd files
+250 Directory successfully changed.
+ftp> put test.txt
+local: test.txt remote: test.txt
+229 Entering Extended Passive Mode (|||28043|)
+150 Ok to send data.
+100% |********************|    20      305.17 KiB/s    00:00 ETA
+226 Transfer complete.
+20 bytes sent in 00:00 (76.29 KiB/s)
+ftp> ls
+229 Entering Extended Passive Mode (|||10691|)
+150 Here comes the directory listing.
+-rw-rw-r--    1 1000     1000           20 Mar 05 19:41 test.txt
+226 Directory send OK.
+ftp> get test.txt
+local: test.txt remote: test.txt
+229 Entering Extended Passive Mode (|||20912|)
+150 Opening BINARY mode data connection for test.txt (20 bytes).
+100% |********************|    20       71.54 KiB/s    00:00 ETA
+226 Transfer complete.
+20 bytes received in 00:00 (34.69 KiB/s)
+ftp> bye
+221 Goodbye.
+
+---------------------------------------------------------------------------------
+
+HOSTING A sftp SERVER AND PERFROMING get AND put OPERATIONS:
+
+
