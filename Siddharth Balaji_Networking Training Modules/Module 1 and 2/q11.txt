@@ -1,0 +1,115 @@
+Q: Using a terminal, connect to remote machine via SSH and Telnet.
+
+SSH:
+
+sidhu@sidhu:~$ sudo apt install openssh-server -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+openssh-server is already the newest version (1:9.6p1-3ubuntu13.8).
+0 upgraded, 0 newly installed, 0 to remove and 275 not upgraded.
+sidhu@sidhu:~$ sudo systemctl enable ssh
+Synchronizing state of ssh.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable ssh
+sidhu@sidhu:~$ sudo systemctl start shh
+Failed to start shh.service: Unit shh.service not found.
+sidhu@sidhu:~$ sudo systemctl start ssh
+sidhu@sidhu:~$ sudo systemctl status ssh
+● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/usr/lib/systemd/system/ssh.service; enab>
+     Active: active (running) since Thu 2025-03-06 15:41:09 IS>
+TriggeredBy: ● ssh.socket
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 1391 (sshd)
+      Tasks: 1 (limit: 5742)
+     Memory: 2.1M (peak: 2.3M)
+        CPU: 26ms
+     CGroup: /system.slice/ssh.service
+             └─1391 "sshd: /usr/sbin/sshd -D [listener] 0 of 1>
+
+Mar 06 15:41:09 sidhu systemd[1]: Starting ssh.service - OpenB>
+Mar 06 15:41:09 sidhu sshd[1391]: Server listening on :: port >
+Mar 06 15:41:09 sidhu systemd[1]: Started ssh.service - OpenBS>
+lines 1-16/16 (END)
+
+sidhu@sidhu:~$ ssh sidhu@192.168.1.100
+
+sidhu@192.168.1.100's password: 
+Welcome to Ubuntu 24.04.1 LTS (GNU/Linux 6.11.0-19-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+Last login: Thu Mar  6 15:52:36 2025 from 10.0.2.15
+sidhu@remote:~$ 
+
+
+-----------------------------------------------------------------------------------
+
+
+Telnet:
+
+sidhu@sidhu:~$ sudo apt install xinetd telnetd -y
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  inetutils-telnetd
+The following NEW packages will be installed:
+  inetutils-telnetd telnetd xinetd
+0 upgraded, 3 newly installed, 0 to remove and 228 not upgraded.
+Need to get 179 kB of archives.
+After this operation, 543 kB of additional disk space will be used.
+Fetched 179 kB in 2s (97.2 kB/s)   
+...
+Setting up xinetd (1:2.3.15.4-3build1) ...
+Setting up inetutils-telnetd (2:2.5-3ubuntu4) ...
+Setting up telnetd (0.17+2.5-3ubuntu4) ...
+Processing triggers for man-db ...
+
+sidhu@sidhu:~$ sudo nano /etc/xinetd.d/telnet
+sidhu@sidhu:~$ sudo systemctl restart xinetd
+sidhu@sidhu:~$ sudo systemctl status xinetd
+● xinetd.service - Xinetd A Powerful Replacement For inetd
+     Loaded: loaded (/usr/lib/systemd/system/xinetd.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2025-03-06 16:41:20 IST; 5s ago
+       Docs: man:xinetd
+             man:xinetd.conf
+             man:xinetd.log
+   Main PID: 5232 (xinetd)
+      Tasks: 1 (limit: 5736)
+     Memory: 428.0K (peak: 636.0K)
+        CPU: 45ms
+
+sidhu@sidhu:~$ ss -tlnp | grep :23
+LISTEN 0      4096               *:23              *:*  
+sidhu@sidhu:~$ telnet 127.0.0.1
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+
+Ubuntu 24.04 LTS
+sidhu login: sidhu
+Password: 
+Last login: Thu Mar  6 16:50:20 2025 from 127.0.0.1
+
+Welcome to Ubuntu 24.04 LTS (GNU/Linux 6.11.0-19-generic x86_64)
+sidhu@sidhu:~$ 
+sidhu@sidhu:~$ telnet 192.168.1.100
+Trying 192.168.1.100...
+Connected to 192.168.1.100.
+Escape character is '^]'.
+
+Ubuntu 24.04 LTS
+remoteuser login: sidhu
+Password: 
+Last login: Thu Mar  6 16:55:30 2025 from 192.168.1.10
+
+Welcome to Ubuntu 24.04 LTS (GNU/Linux 6.11.0-19-generic x86_64)
+remoteuser@remote-machine:~$ 
+
+
+-----------------------------x------------------------------------------------x------------------------------------
+
