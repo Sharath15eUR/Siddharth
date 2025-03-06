@@ -1,0 +1,13 @@
+Q5: Understand what happens when duplicate IPs are configured in a network?
+
+-> This situation creates an IP conflict.
+
+This leads to the following problems:
+> Network disruptions
+>Loss of connectivity
+>Security issues
+>Error messages
+
+The solution to this problem is using a DHCP (Dynamic Host Configuration Protocol).
+It automatically assigns unique IP addresses to devices. It dynamically reallocates addresses when
+devices disconnect or reconnect.
