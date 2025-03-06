@@ -1,0 +1,58 @@
+Q8: Check iwconfig/ifconfig to understand in detail about network interfaces.
+
+ifconifg:  
+
+It is used to display and configure the network interfaces.
+
+sidhu@sidhu:~$ ifconfig -a
+enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fe80::a00:27ff:fe21:84b4  prefixlen 64  scopeid 0x20<link>
+        inet6 fd00::a00:27ff:fe21:84b4  prefixlen 64  scopeid 0x0<global>
+        inet6 fd00::b8d2:bc4b:57b:5f08  prefixlen 64  scopeid 0x0<global>
+        ether 08:00:27:21:84:b4  txqueuelen 1000  (Ethernet)
+        RX packets 59707  bytes 86411333 (86.4 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 8425  bytes 537075 (537.0 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 168  bytes 17176 (17.1 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 168  bytes 17176 (17.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+eth0, wlan0: Interface name that dentifies the network adapter.
+inet: IPv4 address is the IP assigned to the interface.
+netmask: Shows the subnet mask.
+broadcast: Broadcast address for the network.
+ether (MAC address): Unique hardware address.
+RX and TX packets & bytes: Shows data sent and received.
+flags (e.g., UP, BROADCAST, RUNNING):  Status indicators.
+
+
+iwconfig:
+
+It is used to display and configure the wireless network interfaces.
+
+sidhu@sidhu:~$ iwconfig
+lo        no wireless extensions.
+
+enp0s3    no wireless extensions.
+
+Although wirelesss connections are not displayed here, following are the common parameters
+displayed.
+
+Interface name (wlan0): Wireless network adapter.
+ESSID: Connected Wi-Fi network name.
+Mode: Managed (Client mode), Ad-Hoc (Peer-to-peer), Monitor (Packet sniffing).
+Frequency: Wi-Fi channel frequency.
+Access Point (AP MAC Address): MAC of the router connected.
+Bit Rate: Current data transmission speed.
+Tx-Power: Signal transmission power in dBm.
+Signal Level: Higher is better (closer to 0 dBm).
+Noise Level: Lower is better (further from 0 dBm).
