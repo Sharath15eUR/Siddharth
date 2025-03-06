@@ -1,0 +1,31 @@
+Q6: Understand how to access remote system using VNCViewer, AnyDesk, 
+TeamViewerand Remote Desktop Connections.
+
+VNC Viewer:
+
+Step 1: Intall VNC server on Ubuntu.
+Step 2: Download VNC Viwerer from RealVNC from RealVNC and install it.
+Step 3: Make a note of the private IP address of the remote system and authenticate with the password.
+Step 4: Now, it will support remote control.
+
+AnyDesk:
+
+Step 1: Download and install AnyDesk on both machines.
+STep 2: Open ANyDesk and note the 9-digit address.
+Step 3: Open ANyDesk on our system and enter the 9-digit address and connect.
+Step 4: Accept the remote connection.
+
+TeamViewer:
+
+Step 1: Install TeamViewer on both machines.
+Step 2: Open TeamViewer and note the TeamViewer ID and password on the remote machine.
+Step 3: Open TeamViewer and enter the ID and connect.
+Step 4: Enter the possword from the remote machines. This wlll provide remote access.
+
+Remote Desktop COnnection: (RDP Windows)
+
+Step 1: Open Settings, go to System and click Remote Desktop.
+Step 2: Enable Remote Desktop  by toggling it on.
+Step 3: Note the PC name and IP address using ifconfig to find the IP address.
+Step 4: Login with remote system's username and password.
+
