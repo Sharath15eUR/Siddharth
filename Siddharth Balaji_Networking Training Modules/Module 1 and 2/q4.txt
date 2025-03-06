@@ -1,0 +1,57 @@
+UNDERSTANDING ping COMMAND AND ITS PARAMETERS:
+
+sidhu@sidhu:~$ ping -c 5 -i 2 -s 100 google.com
+PING google.com (142.250.182.142) 100(128) bytes of data.
+108 bytes from maa05s22-in-f14.1e100.net (142.250.182.142): icmp_seq=1 ttl=255 time=17.2 ms
+108 bytes from maa05s22-in-f14.1e100.net (142.250.182.142): icmp_seq=2 ttl=255 time=1386 ms
+108 bytes from maa05s22-in-f14.1e100.net (142.250.182.142): icmp_seq=3 ttl=255 time=19.9 ms
+108 bytes from maa05s22-in-f14.1e100.net (142.250.182.142): icmp_seq=4 ttl=255 time=16.1 ms
+108 bytes from maa05s22-in-f14.1e100.net (142.250.182.142): icmp_seq=5 ttl=255 time=22.8 ms
+
+--- google.com ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 8017ms
+rtt min/avg/max/mdev = 16.078/292.354/1385.832/546.743 ms
+
+-c refers to the number of packets to be sent.
+-s refers to the sixe of each packet that is sent.
+-i refers to the time interval between each transmission.
+
+------------------------------------------------------------------------------------------------
+
+UNDERSTANDING arp COMMAND AND ITS PARAMETERS:
+
+sidhu@sidhu:~$ arp -a
+? (10.0.2.3) at 54:56:0a:00:02:03 [ether] on enp0s3
+_gateway (10.0.2.2) at 54:56:0a:00:02:02 [ether] on enp0s3
+
+-a displys the ARP table
+-d deletes an ARP entry
+
+------------------------------------------------------------------------------------------------
+
+UNDERSTANDING arp COMMAND AND ITS PARAMETERS:
+
+sidhu@sidhu:~$ ifconfig
+enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fd00::a085:ac5e:31bd:e313  prefixlen 64  scopeid 0x0<global>
+        inet6 fd00::a00:27ff:fe21:84b4  prefixlen 64  scopeid 0x0<global>
+        inet6 fe80::a00:27ff:fe21:84b4  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:21:84:b4  txqueuelen 1000  (Ethernet)
+        RX packets 140  bytes 61854 (61.8 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 309  bytes 41604 (41.6 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+flags=4163<UP,BROADCAST,RUNNING,MULTICAST> refers to Interface is active (UP) and supports broadcasting/multicasting.
+mtu 1500 refers to Maximum Transmission Unit (packet size).
+inet refers to IPv4 address.
+netmask refers to Subnet mask.
+broadcast refers to Broadcast address.
+inet6 refers to IPv6 address.
+ether refers to MAC address.
+RX refers to Received packets.
+TX packets refers to Transmitted packets.
+
+-------------------x---------------------x-------------------------------------------------
+
