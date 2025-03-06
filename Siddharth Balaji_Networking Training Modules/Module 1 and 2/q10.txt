@@ -1,0 +1,23 @@
+Q10: Explain how a DHCP assigns IP addresses to devices in your network.
+
+Dynamic Host COnifguration Protocol uses what is called a DORA process.
+
+DORA stands for:
+> DHCP Discover
+> DHCP Offer
+> DHCP Requst 
+> DHCP Acknowledge
+
+1. DHCP Discover:
+Client sends discover message as a broadcast to find an available DHCP server.
+
+2. DHCP Offer:
+DHCP server will respond with a DHCP Offer which gives an available IP addresss from its IP pool.
+This includes a subnet mask, default gateway, and the duration for which the IP is valid.
+
+3. DHCP Request:
+The client selects one of the available/offered IPs and sends a DHCP request his/her choice.
+
+4. DHCP Acknowledgement:
+DHCP sens a DHCP Ack(Acknowledgement) to confirm that the IP is taken up by this particular client
+and prevents other clients from getting this IP assigned.
