@@ -1,0 +1,21 @@
+Q7. How to check your default gateway is reachable or not and understand about default gateway.
+
+sidhu@sidhu:~$ ip route | grep default
+default via 10.0.2.2 dev enp0s3 proto dhcp src 10.0.2.15 metric 100 
+sidhu@sidhu:~$ ping -c 4 10.0.2.2
+PING 10.0.2.2 (10.0.2.2) 56(84) bytes of data.
+64 bytes from 10.0.2.2: icmp_seq=1 ttl=255 time=0.169 ms
+64 bytes from 10.0.2.2: icmp_seq=2 ttl=255 time=0.517 ms
+64 bytes from 10.0.2.2: icmp_seq=3 ttl=255 time=0.210 ms
+64 bytes from 10.0.2.2: icmp_seq=4 ttl=255 time=0.286 ms
+
+--- 10.0.2.2 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3212ms
+rtt min/avg/max/mdev = 0.169/0.295/0.517/0.134 ms
+
+The default gateway is the router's IP address that connects your local network to other networks.
+When a computer doesn’t know where to send a packet, it forwards it to the default gateway.
+
+10.0.2.2 is the default gateway 
+
+enp0s3 is the network interface used.
