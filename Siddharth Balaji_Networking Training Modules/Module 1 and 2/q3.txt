@@ -1,0 +1,61 @@
+Wireshark is a general packet captruing tool. So, a user must use Wireshark with a goal-oriented approach.
+It can be used to understand which two elements on the network are sharing information, to understand
+if somebody is undergoing a phishing attack or learn general statistics about the network. 
+
+There are general filtering methods like Right-CLick Filtering which will has options like
+1. Apply as filter
+2. Prepare as filter
+3. Find
+4. Colourise
+5. Coopy Conversation Table
+6. REsize all columns to content. 
+
+The others are as follows:
+
+CAPTURE FILTERS:
+Applied before packet capture to limit what is recorded.
+It is more efficient as unwanted packets are never captured.
+
+Example filters:
+host 192.168.1.1 : Captures packets to/from this IP.
+port 80 : Captures only HTTP traffic.
+tcp or udp : Captures only TCP and UDP packets.
+net 192.168.1.0/24 : Captures traffic from a subnet.
+
+
+DISPLAY FILTERS:
+Applied after packet capture to refine displayed packets.
+
+Example filters:
+ip.src == 192.168.1.1 : Shows packets from this IP.
+ip.dst == 10.0.0.1  : Shows packets going to this IP.
+tcp.flags.syn == 1 : Displays only SYN packets.
+http : Displays only HTTP traffic.
+dns && udp : Displays only DNS queries and responses.
+
+
+COLOUR FILTERS:
+Helps visually differentiate packet types using colors.
+
+Example:
+Red : Errors (TCP retransmissions).
+Green : Successful HTTP responses.
+Blue : DNS traffic.
+
+----------------------------------------------------
+
+CISCO PACKET TRACER:
+
+It is a tool that enables us to visualise networks.
+We can add or remove a variety of elements that can be used in a network.
+
+We can simulate how a packet will typically move in a network involving various components.
+It can also be used to verify if a component is even able to send/recieve a packet
+
+We can filter packets by: 
+1. Allowing packets only from specific IP address
+2. Allow specific hosts to access the network.
+3. Filter packest based on protocol like TCP, UDP, ICMP
+4. Filter based on web traffic like HTTP and HTTPS.
+
+
