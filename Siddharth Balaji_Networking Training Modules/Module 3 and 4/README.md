@@ -71,8 +71,31 @@ Image 7.1 and 7.2 show a network and the tracrt command is used to find out wher
 
 q8 will have report and not images uploaded.
 
+All physical ethernet device will be represented as its own within the kernel. This allows us to interact with the hardware more easily.
+Each device can be operated on its own for transmission and receiving data by having a modular nature. 
+Network device drivers are used for this purpose.
+Each device is considered as a file as in /sys/class/net/
+
+Internet Layer (IP) determines routing, while the Transport Layer (TCP/UDP) ensures reliable or fast delivery, depending on the protocol used. 
+
+The kernel optimizes performance with offloading techniques such as Generic Receive Offload (GRO) and TCP Segmentation Offload (TSO)
+
+Linux commands like ip link, ifconfig, and ethtool to set IP addresses, adjust MAC addresses, or enable/disable interfaces.
 
 ## Question 9:
+
+First I will use the "ip link show" to display the network connections. It will show loop back connection and the ethernet.
+
+Second, I will assign an IP address using "sudo ip address 192.168.1.100/24 dev enp0s3" (example) for the interface to be configured. Then I will verify using "ip address show enp0s3".
+
+Third, I will activate the specific network interface using "ip link show enp0s3".
+
+Fourth, I will set a default gateway using "sudo ip route add default via 192.168.1.1" and verify using "ip route show".
+
+Fifth, I will ping the gateway and a public network like google.com to ensure network connectivity. 
+
+Sixth, as I am using Ubuntu on Oracle VirtualBox I will have to make these changes permanent. 
+I will edit /etc/netplan/01-netcfg.yaml file.
 
 ## Question 10:
 
