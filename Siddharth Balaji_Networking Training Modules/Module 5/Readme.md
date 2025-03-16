@@ -26,4 +26,22 @@ Then, I pinged the devices which have the same IP and the attacker captures the 
 
 ## Question 3 
 
-Here, the IP addresses are  manually assigned to the PCs and pinged successfully and network connectivity is established. 
+Here, the IP addresses are  manually assigned to the PCs and pinged successfully and network connectivity is established.
+
+## Question 4 
+
+First, I started a Wireshark scan. 
+Second, I used the Command Prompt of my host machine to execute "ipconfig /relsease" and  "ipconfig /renew" to make my machine send DHCP Discover message and start the DORA process.
+
+D-Discover:
+The client broadcasts a CHCP Discover message to find the available IPs in the DHCP server, 
+0.0.0.0 is used as IP and broadcasts to destination IP 255.255.255.0.
+
+O-Offer:
+The DHCP server responds with an offer message of available IP address. This maybe broadcast or unicast based on the network setup.
+
+R-Request:
+The client send request messae to accept one of the offered IP address with a confirmation.
+
+A-Acknowledge:
+An ACK message is sent to confirm the assigned IP address with the necessary data like IP address, lease time, subnet mask, gateway and more. 
