@@ -339,8 +339,7 @@ Or telnet 192.168.1.1
 Even after several attempts to troubleshoot for all the three methods, it didn't work.
 The vlan was active with the intended port. All access restrictions were removed. Router was conifgured properly, so was the Switch. 
 
-# However, I gained valuable knowledge of conifguring a ssh, telnet and http and to remove access controls and various other troubleshooting methods.
-# and the various dependenices that have to checked in order for it to work.
+# However, I gained valuable knowledge of conifguring a ssh, telnet and http and to remove access controls and various other troubleshooting methods and the various dependenices that have to checked in order for it to work.
 
 These are the commands used in the router:
 ````
