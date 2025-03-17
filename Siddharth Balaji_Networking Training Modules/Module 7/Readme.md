@@ -589,3 +589,36 @@ Second, we test the connectivity. A ping from PC0 to 192.168.1.1 will run succes
 A ping from PC1 with IP address 10.10.10.100 will fail because it is blocked.
 
 
+## Question 13
+
+Here, we are supposed to create the extneded ACL to block http and ftp.
+````
+Router(config)# access-list 101 deny tcp any any eq 80   
+Router(config)# access-list 101 deny tcp any any eq 21   
+Router(config)# access-list 101 permit ip any any      
+````
+This will Block HTTP, Block FTP and Allow all other traffic.
+
+On trying http://192.168.2.2 in the web browser, it times out.
+On trying ftp access with C:\> ftp 192.168.2.2, it is blcoked.
+
+
+
+
+To remove the block, we remove the existing ACL from the interface temporarily.
+````
+Router(config-ext-nacl)# permit tcp any host 192.168.2.2 eq ftp
+````
+OR delete the 'deny ftp' rule
+````
+Router(config)# ip access-list extended 101
+Router(config-ext-nacl)# no 20
+Router(config-ext-nacl)# exit
+Router(config)# interface GigabitEthernet0/1
+Router(config-if)# ip access-group 101 in
+Router(config-if)# exit
+````
+Now, ftp 192.168.2.2 will work successfully and ask for username and password to login. 
+
+
+## Question 14
