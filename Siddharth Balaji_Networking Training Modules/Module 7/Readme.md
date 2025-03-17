@@ -68,6 +68,7 @@ Troubleshooting technique:
 Use "sh vlan bief" to check whether the ports are assigned properly. If vlan 10 and 20 are not assigned to their corresponding ports, use the below commands on 
 both the switches to configure ports correctly.
 
+````
 Switch(config)#interface FastEthernet0/1
 Switch(config-if)#switchport mode access
 Switch(config-if)#switchport access vlan 10
@@ -77,5 +78,6 @@ Switch(config)#interface FastEthernet0/2
 Switch(config-if)#switchport mode access
 Switch(config-if)#switchport access vlan 20
 Switch(config-if)#exit
+````
 
 On using "sh vlan breif", we can see vlan 10 and 20 listed.
