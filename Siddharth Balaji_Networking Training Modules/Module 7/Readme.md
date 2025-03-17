@@ -1,4 +1,4 @@
-## Question 1
+![image](https://github.com/user-attachments/assets/c7ce2da9-8538-4349-83f5-9f39db879bca)## Question 1
 
 Search for Windows Powershell on your host machine's search box and click enter to exceute the commands.
 
@@ -56,6 +56,61 @@ and the other having 50.
 On using the command "sh interface trunk", Native VLAN is listed as 99, thus sloving the problem.
 
 ## Question 7
+
+Type the following commands in switch CLI to enable telnet.
+
+````
+Switch>enable
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#vlan 99
+Switch(config-vlan)#name Management
+Switch(config-vlan)#exit
+Switch(config)#interface vlan 99
+Switch(config-if)#
+%LINK-5-CHANGED: Interface Vlan99, changed state to up
+
+Switch(config-if)#ip address 192.168.1.100 255.255.255.0
+Switch(config-if)#no shutdown
+Switch(config-if)#exit
+Switch(config)#
+Switch(config)#interface FastEthernet0/1
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 99
+Switch(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan99, changed state to up
+exit
+Switch(config)#hostname MySwitch
+MySwitch(config)#ip domain-name example.com
+MySwitch(config)#crypto ket generate rsa
+                          ^
+% Invalid input detected at '^' marker.
+	
+MySwitch(config)#crypto key generate rsa
+The name for the keys will be: MySwitch.example.com
+Choose the size of the key modulus in the range of 360 to 4096 for your
+  General Purpose Keys. Choosing a key modulus greater than 512 may take
+  a few minutes.
+
+How many bits in the modulus [512]: 2048
+% Generating 2048 bit RSA keys, keys will be non-exportable...[OK]
+
+MySwitch(config)#ip ssh version 2
+*Mar 1 0:4:52.21: %SSH-5-ENABLED: SSH 1.99 has been enabled
+MySwitch(config)#username admin secret xyz
+MySwitch(config)#
+MySwitch(config)#line vty 0 4
+MySwitch(config-line)#login local
+MySwitch(config-line)#transport input shh
+                                       ^
+% Invalid input detected at '^' marker.
+	
+MySwitch(config-line)#transport input ssh
+MySwitch(config-line)#exit
+MySwitch(config)#
+````
+
+When I login to the telnet in the command prompt of the PC, I am able to login and gain access with the creadentials I had set in CLI of the switch.
 
 
 ## Question 8
