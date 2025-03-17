@@ -1,0 +1,15 @@
+192.168.10.5 belongs to Class C and is a private IP address. Range: 192.168.0.0 - 192.168.255.255
+
+172.20.15.1 belongs to Class B and is a private IP address.  Range: 172.16.0.0 - 172.31.255.255
+
+8.8.8.8 belongs to Class A and is a public IP address.  Range: 1.0.0.0 - 126.255.255.255
+
+Private IP addresses cannot be routed on the internet. 
+
+Network Address Translation (NAT) allows devices with private IPs to access the internet by translating them into a public IP assigned by an ISP.
+
+The router replaces it with the public IP assigned by the ISP.
+
+NAT table that maps the private IP and port to the public IP and port.
+
+When a response is returned, the NAT table is checked and the packet is sent to the correct device.
