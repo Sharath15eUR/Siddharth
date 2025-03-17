@@ -580,3 +580,12 @@ VLAN Name                             Status    Ports
 ````
 
 ## Question 12
+
+The goal is the conifgure a standard ACL on the router to permit traffic only from a specific IP range i.e. to permit traffic from some and deny all others.
+
+First, we create a standard ACL to permit traffic within the range 192.168.1.0 to 192.168.1.255 and deny all others.
+
+Second, we test the connectivity. A ping from PC0 to 192.168.1.1 will run successfully.
+A ping from PC1 with IP address 10.10.10.100 will fail because it is blocked.
+
+
