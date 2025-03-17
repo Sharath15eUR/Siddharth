@@ -136,3 +136,192 @@ Switch(config-if)#exit
 ````
 
 On using "sh vlan brief", we can see vlan 10 and 20 listed.
+
+## Question 10
+
+Here, PC0 belongs to vlan 10 and PC1 belongs to vlan 20 respectively. 
+
+We are supposed to configure using a technique called "Router on Stick". 
+
+We must conifgure the swtich to enbale access to the ports to receive data from the two vlans.
+
+Then, the router must be conifgured to recieve packets through its corresponding port.
+
+On pinging from PC0 in vlan 10 to PC1 in vlan 20, the packets are received completely.
+
+Switch:
+````
+Switch>
+Switch>
+Switch>enable
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#vlan 10 name Sales
+                       ^
+% Invalid input detected at '^' marker.
+	
+Switch(config)#vlan 10
+Switch(config-vlan)#name Sales
+Switch(config-vlan)#exit
+Switch(config)#valn 20
+                ^
+% Invalid input detected at '^' marker.
+	
+Switch(config)#vlan 20
+Switch(config-vlan)#name HR
+Switch(config-vlan)#exit
+Switch(config)#
+Switch(config)#
+Switch(config)#interface FastEthernet0/2
+Switch(config-if)#siwtchport mode access
+                   ^
+% Invalid input detected at '^' marker.
+	
+Switch(config-if)#switchport mode access
+Switch(config-if)#swicthport access vlan 10
+                     ^
+% Invalid input detected at '^' marker.
+	
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#exit
+Switch(config)#
+Switch(config)#interface FasEthernet0/3
+                            ^
+% Invalid input detected at '^' marker.
+	
+Switch(config)#interface FastEthernet0/3
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 20
+Switch(config-if)#exit
+Switch(config)#
+Switch(config)#interface FastEthernet0/24
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#switchport trunk encapsulation dot1q
+                                   ^
+% Invalid input detected at '^' marker.
+	
+Switch(config-if)#
+Switch#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#interface FastEthernet0/24
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#switchport trunk allowed vlan all
+Switch(config-if)#exit
+Switch(config)#
+%LINK-5-CHANGED: Interface FastEthernet0/24, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/24, changed state to up
+
+
+Switch con0 is now available
+
+
+Press RETURN to get started.
+
+
+Switch>
+Switch>sh vlan brief
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/1, Fa0/4, Fa0/5, Fa0/6
+                                                Fa0/7, Fa0/8, Fa0/9, Fa0/10
+                                                Fa0/11, Fa0/12, Fa0/13, Fa0/14
+                                                Fa0/15, Fa0/16, Fa0/17, Fa0/18
+                                                Fa0/19, Fa0/20, Fa0/21, Fa0/22
+                                                Fa0/23, Gig0/1, Gig0/2
+10   Sales                            active    Fa0/2
+20   HR                               active    Fa0/3
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+Switch>sh interface trunk
+Port        Mode         Encapsulation  Status        Native vlan
+Fa0/24      on           802.1q         trunking      1
+
+Port        Vlans allowed on trunk
+Fa0/24      1-1005
+
+Port        Vlans allowed and active in management domain
+Fa0/24      1,10,20
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Fa0/24      1,10,20
+
+Switch>sh ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol 
+FastEthernet0/1        unassigned      YES manual down                  down 
+FastEthernet0/2        unassigned      YES manual up                    up 
+FastEthernet0/3        unassigned      YES manual up                    up 
+FastEthernet0/4        unassigned      YES manual down                  down 
+FastEthernet0/5        unassigned      YES manual down                  down 
+FastEthernet0/6        unassigned      YES manual down                  down 
+FastEthernet0/7        unassigned      YES manual down                  down 
+FastEthernet0/8        unassigned      YES manual down                  down 
+FastEthernet0/9        unassigned      YES manual down                  down 
+FastEthernet0/10       unassigned      YES manual down                  down 
+FastEthernet0/11       unassigned      YES manual down                  down 
+FastEthernet0/12       unassigned      YES manual down                  down 
+FastEthernet0/13       unassigned      YES manual down                  down 
+FastEthernet0/14       unassigned      YES manual down                  down 
+FastEthernet0/15       unassigned      YES manual down                  down 
+FastEthernet0/16       unassigned      YES manual down                  down 
+FastEthernet0/17       unassigned      YES manual down                  down 
+FastEthernet0/18       unassigned      YES manual down                  down 
+FastEthernet0/19       unassigned      YES manual down                  down 
+FastEthernet0/20       unassigned      YES manual down                  down 
+FastEthernet0/21       unassigned      YES manual down                  down 
+ --More-- 
+
+`````
+
+Router:
+````
+Router#
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#interface GigabitEthernet0/0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#interface GigabitEthernet0/0.10
+Router(config-subif)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.10, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.10, changed state to up
+
+Router(config-subif)#ip address 192.168.10.1 255.255.255.0
+
+% Configuring IP routing on a LAN subinterface is only allowed if that
+subinterface is already configured as part of an IEEE 802.10, IEEE 802.1Q,
+or ISL vLAN.
+
+Router(config-subif)#ip address 192.168.10.1 255.255.255.0
+
+% Configuring IP routing on a LAN subinterface is only allowed if that
+subinterface is already configured as part of an IEEE 802.10, IEEE 802.1Q,
+or ISL vLAN.
+
+Router(config-subif)#interface GigabitEthernet0/0.10
+Router(config-subif)#encapsulation dot1Q 10
+Router(config-subif)#ip address 192.168.10.1 255.255.255.0
+Router(config-subif)#exit
+Router(config)#
+Router(config)#interface GigabitEthernet0/0.20
+Router(config-subif)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.20, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.20, changed state to up
+
+Router(config-subif)#encapsulation dot1Q 20
+Router(config-subif)#ip address 192.168.20.1 255.255.255.0
+Router(config-subif)#exit
+Router(config)#
+````
+
+
+## Question 11
