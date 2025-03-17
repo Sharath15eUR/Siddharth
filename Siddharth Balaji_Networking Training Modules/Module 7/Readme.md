@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/c7ce2da9-8538-4349-83f5-9f39db879bca)## Question 1
+## Question 1
 
 Search for Windows Powershell on your host machine's search box and click enter to exceute the commands.
 
