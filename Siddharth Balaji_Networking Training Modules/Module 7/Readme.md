@@ -327,3 +327,257 @@ Router(config)#
 
 
 ## Question 11
+
+There are a few ways doing this.
+
+One is using the web browser in the PC1 to access http://192.168.1.1. However, Cisco Packet Tracer doesn't permit this. 
+
+The other is using ssh -l admin 192.168.1.1
+
+Or telnet 192.168.1.1
+
+Even after several attempts to troubleshoot for all the three methods, it didn't work.
+The vlan was active with the intended port. All access restrictions were removed. Router was conifgured properly, so was the Switch. 
+
+# However, I gained valuable knowledge of conifguring a ssh, telnet and http and to remove access controls and various other troubleshooting methods.
+# and the various dependenices that have to checked in order for it to work.
+
+These are the commands used in the router:
+````
+MyRouter#show ip ssh
+SSH Enabled - version 2.0
+Authentication timeout: 120 secs; Authentication retries: 3
+MyRouter#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0     192.168.1.1     YES manual up                    up 
+GigabitEthernet0/1     unassigned      YES unset  administratively down down 
+GigabitEthernet0/2     unassigned      YES unset  administratively down down 
+Vlan1                  unassigned      YES unset  administratively down down
+MyRouter#%IP-4-DUPADDR: Duplicate address 192.168.1.1 on GigabitEthernet0/0, sourced by 0001.C972.5291
+
+MyRouter#
+MyRouter#
+MyRouter#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0     192.168.1.1     YES manual up                    up 
+GigabitEthernet0/1     unassigned      YES unset  administratively down down 
+GigabitEthernet0/2     unassigned      YES unset  administratively down down 
+Vlan1                  unassigned      YES unset  administratively down down
+MyRouter#show vlan brief
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+MyRouter#
+MyRouter#
+MyRouter#
+MyRouter#exit
+
+
+
+
+MyRouter con0 is now available
+
+
+
+Press RETURN to get started.
+
+
+
+MyRouter>
+MyRouter>
+MyRouter>
+MyRouter>exit
+
+
+
+
+MyRouter con0 is now available
+
+
+Press RETURN to get started.
+
+
+
+
+MyRouter>
+MyRouter>
+MyRouter>
+MyRouter>exit
+
+
+
+MyRouter con0 is now available
+
+
+
+Press RETURN to get started.
+
+
+
+MyRouter>
+MyRouter>
+MyRouter>
+MyRouter>
+MyRouter>enable
+MyRouter#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+MyRouter(config)#line vty 0 4
+MyRouter(config-line)#transport input telnet
+MyRouter(config-line)#login local
+MyRouter(config-line)#exit
+MyRouter(config)#ip telnet source-interface GigabitEthernet0/0
+                     ^
+% Invalid input detected at '^' marker.
+	
+MyRouter(config)#username admin privilege 15 password myTelnetPass
+ERROR: Can not have both a user password and a user secret.
+Please choose one or the other.
+MyRouter(config)#
+MyRouter(config)#show ip interface brief
+                  ^
+% Invalid input detected at '^' marker.
+	
+MyRouter(config)#sh ip interface brief
+                  ^
+% Invalid input detected at '^' marker.
+	
+MyRouter(config)#exit
+MyRouter#
+%SYS-5-CONFIG_I: Configured from console by console
+
+MyRouter#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0     192.168.1.1     YES manual up                    up 
+GigabitEthernet0/1     unassigned      YES unset  administratively down down 
+GigabitEthernet0/2     unassigned      YES unset  administratively down down 
+Vlan1                  unassigned      YES unset  administratively down down
+MyRouter#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0     192.168.1.1     YES manual up                    up 
+GigabitEthernet0/1     unassigned      YES unset  administratively down down 
+GigabitEthernet0/2     unassigned      YES unset  administratively down down 
+Vlan1                  unassigned      YES unset  administratively down down
+MyRouter#
+MyRouter#
+MyRouter#show running-config | section line vty
+line vty 0 4
+ login local
+ transport input telnet
+MyRouter#show access-lists
+Extended IP access list 100
+    10 permit tcp any any eq www
+    20 deny tcp any any (48 match(es))
+    30 permit tcp any any
+
+MyRouter#
+MyRouter#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+MyRouter(config)#ip access-list extended 100
+MyRouter(config-ext-nacl)#permit tcp any any eq telnet
+MyRouter(config-ext-nacl)#exit
+MyRouter(config)#exit
+MyRouter#
+%SYS-5-CONFIG_I: Configured from console by console
+
+MyRouter#write memory
+Building configuration...
+[OK]
+MyRouter#
+````
+
+These are the commands I used in the Switch:
+````
+Switch>enable
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#interface FastEthernet0/2
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 1
+Switch(config-if)#exit
+Switch(config)#interface FastEthernet0/3
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 1
+Switch(config-if)#exit
+Switch(config)#
+Switch(config)#exit
+Switch#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Switch#show cdp neighbours
+                       ^
+% Invalid input detected at '^' marker.
+	
+Switch#show cdp neighbors
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
+Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID
+MyRouter     Fas 0/1          135            R       C2900       Gig 0/0
+Switch#sh vlan brief
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12
+                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16
+                                                Fa0/17, Fa0/18, Fa0/19, Fa0/20
+                                                Fa0/21, Fa0/22, Fa0/23, Fa0/24
+                                                Gig0/1, Gig0/2
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+Switch#
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#interface FastEthernet0/1
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 1
+Switch(config-if)#exit
+Switch(config)#
+Switch(config)#exit
+Switch#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Switch#write memory
+Building configuration...
+[OK]
+Switch#
+Switch#sh vlan brief
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12
+                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16
+                                                Fa0/17, Fa0/18, Fa0/19, Fa0/20
+                                                Fa0/21, Fa0/22, Fa0/23, Fa0/24
+                                                Gig0/1, Gig0/2
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+Switch#sh vlan brief
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12
+                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16
+                                                Fa0/17, Fa0/18, Fa0/19, Fa0/20
+                                                Fa0/21, Fa0/22, Fa0/23, Fa0/24
+                                                Gig0/1, Gig0/2
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+````
+
+## Question 12
