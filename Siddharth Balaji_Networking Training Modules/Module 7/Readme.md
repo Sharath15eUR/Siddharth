@@ -65,7 +65,7 @@ On using the command "sh interface trunk", Native VLAN is listed as 99, thus slo
 
 Troubleshooting technique:
 
-Use "sh vlan bief" to check whether the ports are assigned properly. If vlan 10 and 20 are not assigned to their corresponding ports, use the below commands on 
+Use "sh vlan brief" to check whether the ports are assigned properly. If vlan 10 and 20 are not assigned to their corresponding ports, use the below commands on 
 both the switches to configure ports correctly.
 
 ````
@@ -80,4 +80,4 @@ Switch(config-if)#switchport access vlan 20
 Switch(config-if)#exit
 ````
 
-On using "sh vlan breif", we can see vlan 10 and 20 listed.
+On using "sh vlan brief", we can see vlan 10 and 20 listed.
