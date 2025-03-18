@@ -66,5 +66,10 @@ When a response is returned, the NAT table is checked and the packet is sent to 
 
 ## Q 5
 
+Here, we try to ping the Google web server through a NAT router.
 
+Private IP is transalted into Public IP. 
 
+Two routers are conifgured accordingly for inside and outside to enable this process.
+
+When PC0 pings 8.8.8.8, NAT translations are shown in the router as shown in the image.
