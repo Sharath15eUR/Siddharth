@@ -116,7 +116,18 @@ When I login to the telnet in the command prompt of the PC, I am able to login a
 
 
 ## Question 8
+Here, we are supposed to configure a Cisco switch port to support both voice (VLAN 20) and data (VLAN 10).
 
+VoIP Phone will support VLAN tagging and PC is connected through the phone’s data port.
+
+The VoIP phone is connected to the switch and the PC is connected to the VoIP phone.
+
+The ouput will be like this to proving connectivity:
+````
+Operational Mode: Access
+Access Mode VLAN: 10
+Voice VLAN: 20
+````
 
 ## Question 9 
 
