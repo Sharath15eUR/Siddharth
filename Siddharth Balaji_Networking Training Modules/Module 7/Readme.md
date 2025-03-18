@@ -641,3 +641,47 @@ Private IP is transalted into Public IP.
 Two routers are conifgured accordingly for inside and outside to enable this process.
 
 When PC0 pings 8.8.8.8, NAT translations are shown in the router as shown in the image.
+
+## Question 15
+
+On Linux;
+````
+sudo apt update
+sudo apt install iperf3 -y
+````
+
+On laptop, to start server:
+````
+iperf3 -s
+````
+
+On client (phone):
+````
+-iperf3 -c 192.168.1.100
+````
+
+
+TCP test:
+````
+iperf3 -c 192.168.1.100 -p 5201
+````
+
+UDP test:
+````
+iperf3 -u -c 192.168.1.100 -b 10M
+````
+
+Bidirectional Test:
+````
+iperf3 -c 192.168.1.100 --bidir
+````
+
+Reverse Test:
+````
+iperf3 -c 192.168.1.100 -R
+````
+
+Bandwidth: Displays transmission rate in Mbps/Gbps.
+Jitter: Delay variation in milliseconds (important for VoIP and streaming).
+Packet Loss: Shows how many packets were dropped (critical for UDP).
+Latency: Measures round-trip delay.
